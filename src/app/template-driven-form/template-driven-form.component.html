@@ -1,0 +1,19 @@
+<!--<input type="text" [(ngModel)]="xxx">-->
+
+<!--<form #myForm (ngSubmit)="submit(myForm)">-->
+<form #myForm='ngForm' (ngSubmit)="submit(myForm)">
+  <div>
+    <input #lgn='ngModel' required [minlength]="3" name="login" type="text" [(ngModel)]="user.login">
+    <div *ngIf="lgn.errors?.required">required field</div>
+    <div *ngIf="lgn.errors?.minlength?.actualLength < lgn.errors?.minlength?.requiredLength">
+      actualLength - {{lgn.errors?.minlength?.actualLength}}
+      requiredLength - {{lgn.errors?.minlength?.requiredLength}}
+    </div>
+  </div>
+
+  <div>
+    <input required [minlength]="3" name="password" type="text" [(ngModel)]="user.password">
+  </div>
+<!--  <button [disabled]="myForm.invalid">save</button>-->
+  <button >save</button>
+</form>
